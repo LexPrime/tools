@@ -18,7 +18,7 @@ install_gum() {
 
 # Install docker
 install_docker() {
-  sudo iapt-get update > /dev/null
+  sudo apt-get update > /dev/null
   sudo apt-get install -y curl > /dev/null
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
   echo \
