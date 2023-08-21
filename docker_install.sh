@@ -48,13 +48,14 @@ update_compose() {
 }
 
 
-# Title
-gum style --foreground 2 --border-foreground 4 --border double --bold --align center --width 50 --margin "2 20" --padding "1 1" 'Docker installer' 'by Darksiders Staking'
-
 # Check gum
 if [[ ! -x "$(command -v gum)" ]]; then
  install_gum
 fi
+
+
+# Title
+gum style --foreground 2 --border-foreground 4 --border double --bold --align center --width 50 --margin "2 20" --padding "1 1" 'Docker installer' 'by Darksiders Staking'
 
 
 # Check docker
