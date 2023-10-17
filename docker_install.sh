@@ -4,28 +4,27 @@ set -euo pipefail
 
 DOCKER_COMPOSE_VERSION="v2.22.0"
 
-
 # Install gum
 install_gum() {
   sudo apt-get update > /dev/null
-  sudo apt-get install -y curl jq git > /dev/null
+  sudo apt-get install -y curl jq git
   sudo mkdir -p /etc/apt/keyrings > /dev/null
   curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
-  echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+  echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list > /dev/null
   sudo apt-get update > /dev/null
-  sudo apt-get install -y gum  > /dev/null
+  sudo apt-get install -y gum
 }
 
 # Install docker
 install_docker() {
   sudo apt-get update > /dev/null
-  sudo apt-get install -y curl > /dev/null
+  sudo apt-get install -y curl
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
   echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   sudo apt-get update > /dev/null
-  sudo apt-get install -y docker-ce docker-ce-cli containerd.io > /dev/null
+  sudo apt-get install -y docker-ce docker-ce-cli containerd.io
   gum style --foreground 2 --align left --margin "1 1" "Done! $(docker --version)"
 }
 
