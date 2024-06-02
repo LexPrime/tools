@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-DOCKER_COMPOSE_VERSION="v2.27.0"
+DOCKER_COMPOSE_VERSION="v2.27.1"
 
 
 # Install gum
