@@ -2,9 +2,6 @@
 
 set -euo pipefail
 
-DOCKER_COMPOSE_VERSION="v2.27.1"
-
-
 # Install gum
 install_gum() {
   sudo apt-get update > /dev/null
@@ -65,6 +62,8 @@ if [[ ! -x "$(command -v docker)" ]]; then
 else
   gum style --foreground 3 --align left --margin "0 1" "Docker installed. $(docker --version)"
 fi
+
+DOCKER_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)
 
 # Check docker-compose
 if [[ ! -x "$(command -v docker-compose)" ]]; then
